@@ -1,0 +1,16 @@
+﻿<Window x:Class="Development.EndGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Development"
+        mc:Ignorable="d"
+        Title="EndGame" Height="768" Width="1024" Background="#FF9AD9EA">
+    <Grid>
+
+        <Label Content="Koniec gry" FontSize="72" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Label x:Name="pktLabel" Content="Liczba punktów: " FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="145,0,0,0"/>
+        <Button x:Name="backButton" Content="Wróć do menu" HorizontalAlignment="Left" FontSize="32" Margin="512,604,0,0" VerticalAlignment="Top" Height="78" Width="372" Click="backButton_Click"/>
+
+    </Grid>
+</Window>
