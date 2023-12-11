@@ -1,0 +1,30 @@
+Łazienka
+Piwnica
+Strych
+Biuro
+Garaż
+Salon
+Pralnia
+Jadalnia
+Kuchnia
+Sypialnia
+Pokój bobasa
+Dziedziniec
+Komin
+Skrzynka pocztowa
+Dom
+Drzwi
+Ścieżka
+Balkon
+Podjazd
+Dach
+Okno
+Ogrodzenie
+Ściana
+Garderoba
+Pokój
+Lustro
+Korytarz
+Trawnik
+Taras
+Stodoła

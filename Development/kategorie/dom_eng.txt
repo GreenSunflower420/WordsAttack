@@ -1,0 +1,30 @@
+Bathroom
+Basement
+Attic
+Office
+Garage
+Living room
+Laundry
+Dining room
+Kitchen
+Bedroom
+Nursery
+Courtyard
+Chimney
+Mailbox
+House
+Door
+Path
+Balcony
+Driveway
+Roof
+Window
+Fence
+Wall
+Wardrobe
+Room
+Mirror
+Corridor
+Lawn
+Terrace
+Barn

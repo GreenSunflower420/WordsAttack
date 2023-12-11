@@ -1,0 +1,30 @@
+Tramwaj powietrzny
+Samolot
+Ambulans
+Balon
+Buldożer
+Rower
+Łódź
+Autobus
+Powóz
+Betoniarka
+Dźwig
+Kamper
+Karawana
+Wywrotka
+Dostawczak
+Wóz strażacki
+Wózek widłowy
+Helikopter
+Motocykl
+Jacht
+Radiowóz
+Łódź wiosłowa
+Skuter
+Deskorolka
+Metro
+Taksówka
+Traktor
+Pociąg
+Ciężarówka
+Rakieta
