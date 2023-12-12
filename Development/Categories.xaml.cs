@@ -1,77 +1,96 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
+/// <summary>
+/// Przestrzen projektowa gry
+/// </summary>
 namespace Development
 {
     /// <summary>
-    /// Interaction logic for Categories.xaml
+    /// Klasa gry wyświetlająca menu wyboru kategorii
     /// </summary>
     public partial class Categories : Window
     {
+        /// <summary>
+        /// Konstruktor klasy, inicjujący wygląd okna oraz animacje przycisków
+        /// </summary>
+        /// 
+        Color kolor = Colors.LightBlue;
         public Categories()
         {
             InitializeComponent();
 
-            stylizujButton(btnDom);
-            stylizujButton(btnOwoce);
-            stylizujButton(btnPojazdy);
-            stylizujButton(btnRodzina);
-            stylizujButton(btnZwierzeta);
-            AnimateButtonColor(btnDom, System.Windows.Media.Colors.LightBlue);
-            AnimateButtonColor(btnOwoce, System.Windows.Media.Colors.LightBlue);
-            AnimateButtonColor(btnPojazdy, System.Windows.Media.Colors.LightBlue);
-            AnimateButtonColor(btnRodzina, System.Windows.Media.Colors.LightBlue);
-            AnimateButtonColor(btnZwierzeta, System.Windows.Media.Colors.LightBlue);
+            StylizujButton(btnDom);
+            StylizujButton(btnOwoce);
+            StylizujButton(btnPojazdy);
+            StylizujButton(btnRodzina);
+            StylizujButton(btnZwierzeta);
+            AnimateButtonColor(btnDom, kolor);
+            AnimateButtonColor(btnOwoce, kolor);
+            AnimateButtonColor(btnPojazdy, kolor);
+            AnimateButtonColor(btnRodzina, kolor);
+            AnimateButtonColor(btnZwierzeta, kolor);
         }
-
-        public void stylizujButton(Button btn)
+        
+        /// <summary>
+        /// Metoda odpowiadająca za stylizowanie przycisków
+        /// <para>Każdy przycisk ma mieć te same właściwości, aby menu wyglądało estetycznie</para>
+        /// </summary>
+        /// <param name="btn">Reprezentant właściwości danego przycisku</param>
+        public void StylizujButton(Button btn)
         {
             btn.FontSize = 24;
             btn.HorizontalAlignment = HorizontalAlignment.Center;
             btn.VerticalAlignment = VerticalAlignment.Center;
-            btn.FontFamily = new System.Windows.Media.FontFamily("Segoe UI");
+            btn.FontFamily = new FontFamily("Segoe UI");
             btn.MinWidth = 400;
-            btn.Background = System.Windows.Media.Brushes.LightGray;
-            btn.Foreground = System.Windows.Media.Brushes.Black;
-            btn.BorderBrush = System.Windows.Media.Brushes.Gray;
+            btn.Background = Brushes.LightGray;
+            btn.Foreground = Brushes.Black;
+            btn.BorderBrush = Brushes.Gray;
             btn.BorderThickness = new Thickness(2);
-            btn.Cursor = System.Windows.Input.Cursors.Hand;
+            btn.Cursor = Cursors.Hand;
 
-            btn.MouseEnter += (sender, e) => AnimateButtonColor(btn, System.Windows.Media.Colors.Brown);
-            btn.MouseLeave += (sender, e) => AnimateButtonColor(btn, System.Windows.Media.Colors.LightBlue);
+            btn.MouseEnter += (sender, e) => AnimateButtonColor(btn, Colors.Brown);
+            btn.MouseLeave += (sender, e) => AnimateButtonColor(btn, kolor);
         }
 
-        private void AnimateButtonColor(Button button, System.Windows.Media.Color targetColor)
+        /// <summary>
+        /// Metoda odpowiadająca za ustawienie koloru przycisku dla animacji
+        /// </summary>
+        /// <param name="button">Reprezentant właściwości danego przycisku</param>
+        /// <param name="targetColor">Wybrany kolor w zależności od stanu przycisku</param>
+        private static void AnimateButtonColor(Button button, Color targetColor)
         {
-            ColorAnimation colorAnimation = new ColorAnimation
+            /// <summary>
+            /// Ustawienie czasu oraz koloru dla animacji najechania myszką na przycisk
+            /// </summary>
+            ColorAnimation colorAnimation = new()
             {
                 To = targetColor,
                 Duration = TimeSpan.FromMilliseconds(200)
             };
 
-            SolidColorBrush originalBrush = button.Background as SolidColorBrush;
-            if (originalBrush != null)
+            /// <summary>
+            /// Ustawienie tła dla przycisku
+            /// </summary>
+            if (button.Background is SolidColorBrush originalBrush)
             {
-                SolidColorBrush newBrush = new SolidColorBrush(originalBrush.Color);
+                SolidColorBrush newBrush = new(originalBrush.Color);
                 button.Background = newBrush;
 
                 newBrush.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation);
             }
         }
 
+        /// <summary>
+        /// Wybranie danej kategorii
+        /// </summary>
+        /// <param name="sender">Obiekt, który wysłał zdarzenie</param>
+        /// <param name="e">Argumenty zdarzenia, zawierające dodatkowe informacje o zdarzeniu.</param>
         private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
             // Ukrywanie oryginalnego okna
@@ -79,11 +98,19 @@ namespace Development
 
             if (sender is Button button)
             {
+                /// <summary>
+                /// Wartość tekstowa przekazywana do klasy Game.xaml.cs, która zawiera nazwę kategorii
+                /// </summary>
                 string buttonText = button.Content.ToString();
                 // Tutaj możesz użyć buttonText do dalszych operacji
-                var helpWindow = new Game(buttonText.ToLower());
-                helpWindow.Owner = this; // Ustawianie oryginalnego okna jako właściciela nowego okna
-                helpWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner; // Ustawianie nowego okna na środku względem właściciela
+                ///<summary>
+                /// Otwarcie nowego okna z klasą i przekazanie wybranej kategorii
+                /// </summary>
+                Game helpWindow = new(buttonText.ToLower())
+                {
+                    Owner = this, // Ustawianie oryginalnego okna jako właściciela nowego okna
+                    WindowStartupLocation = WindowStartupLocation.CenterOwner // Ustawianie nowego okna na środku względem właściciela
+                };
                 helpWindow.Closed += HelpWindow_Closed; // Dodanie obsługi zdarzenia zamknięcia nowego okna
                 helpWindow.Show();
             }
@@ -92,7 +119,13 @@ namespace Development
             
         }
 
-        private void HelpWindow_Closed(object sender, EventArgs e)
+        /// <summary>
+        /// Metoda odpowiadająca za zamknięcie nieużywanego już danego okna klasy
+        /// <para>Po przejściu do nowego okna</para>
+        /// </summary>
+        /// <param name="sender">Obiekt, który wysłał zdarzenie</param>
+        /// <param name="e">Argumenty zdarzenia, zawierające dodatkowe informacje o zdarzeniu.</param>
+        private void HelpWindow_Closed(object? sender, EventArgs e)
         {
             // Pokazywanie ponownie oryginalnego okna po zamknięciu nowego okna
             this.Visibility = Visibility.Visible;

@@ -15,14 +15,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+/// <summary>
+/// Przestrzen projektowa gry
+/// </summary>
 namespace Development
 {
     /// <summary>
-    /// Interaction logic for Dictionary.xaml
+    /// Klasa odpowiadająca za wyświetlanie słów, biorących udział w grze, w postaci słownika
     /// </summary>
     public partial class Dictionary : Window
     {
+        /// <summary>
+        /// Metoda get/set przechowująca wczytane z pliku słowa
+        /// </summary>
         public ObservableCollection<DictionaryEntry> DictionaryEntries { get; set; }
+
+        /// <summary>
+        /// Konstruktor klasy przypisujący słowa z plików do kolekcji oraz sortującego słowa alfabetycznie
+        /// </summary>
         public Dictionary()
         {
             InitializeComponent();
@@ -40,14 +50,25 @@ namespace Development
 
         }
 
+        /// <summary>
+        /// Metoda wczytująca z plików słowa wraz z ich tłumaczniem
+        /// </summary>
+        /// <param name="polishWordsFile">Ścieżka do pliku tekstowego z polskimi słowami</param>
+        /// <param name="englishTranslationsFile">Ścieżka do pliku tekstowego z tłumaczniem słów</param>
         private void LoadDictionary(string polishWordsFile, string englishTranslationsFile)
         {
             try
             {
                 // Odczyt słów polskich z pliku
+                ///<summary>
+                /// Zmienna tekstowa tablicowa przechowująca wszystkie pliki
+                /// </summary>
                 string[] polishWords = File.ReadAllLines(polishWordsFile);
 
                 // Odczyt tłumaczeń angielskich z pliku
+                ///<summary>
+                /// Zmienna tekstowa tablicowa przechowująca wszystkie pliki
+                /// </summary>
                 string[] englishTranslations = File.ReadAllLines(englishTranslationsFile);
 
                 // Sprawdzenie, czy liczba słów w obu plikach jest taka sama
@@ -74,20 +95,33 @@ namespace Development
             }
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Metoda odpowiadająca za powrót do Menu Głownego gry
+        /// <see cref="MainWindow.MainWindow"/>
+        /// </summary>
+        /// <param name="sender">Obiekt, który wysłał zdarzenie</param>
+        /// <param name="e">Argumenty zdarzenia, zawierające dodatkowe informacje o zdarzeniu.</param>
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             // Ukrywanie oryginalnego okna
             this.Visibility = Visibility.Hidden;
 
             // Tworzenie nowego okna i ustawienie jego położenia
-            var helpWindow = new MainWindow();
-            helpWindow.Owner = this; // Ustawianie oryginalnego okna jako właściciela nowego okna
-            helpWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner; // Ustawianie nowego okna na środku względem właściciela
+            var helpWindow = new MainWindow
+            {
+                Owner = this, // Ustawianie oryginalnego okna jako właściciela nowego okna
+                WindowStartupLocation = WindowStartupLocation.CenterOwner // Ustawianie nowego okna na środku względem właściciela
+            };
             helpWindow.Closed += HelpWindow_Closed; // Dodanie obsługi zdarzenia zamknięcia nowego okna
             helpWindow.Show();
         }
 
-        private void HelpWindow_Closed(object sender, EventArgs e)
+        /// <summary>
+        /// Metoda odpowiedzialna za zamknięcie aktualnego okna gry, po przejściu do kolejnego
+        /// </summary>
+        /// <param name="sender">Obiekt, który wysłał zdarzenie</param>
+        /// <param name="e">Argumenty zdarzenia, zawierające dodatkowe informacje o zdarzeniu.</param>
+        private void HelpWindow_Closed(object? sender, EventArgs e)
         {
             // Pokazywanie ponownie oryginalnego okna po zamknięciu nowego okna
             this.Visibility = Visibility.Visible;
@@ -95,10 +129,19 @@ namespace Development
         }
     }
 
+    /// <summary>
+    /// Klasa, która pozwala na zapis do obiektu oraz odczyt słowa wraz z tłumaczeniem
+    /// </summary>
     public class DictionaryEntry
     {
-        public string PolishWord { get; set; }
-        public string EnglishTranslation { get; set; }
+        /// <summary>
+        /// Metoda get/set dla polskiego słowa
+        /// </summary>
+        public string? PolishWord { get; set; }
+        /// <summary>
+        /// Metoda get/set dla tłumaczenia
+        /// </summary>
+        public string? EnglishTranslation { get; set; }
 
     }
 }

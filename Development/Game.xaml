@@ -8,7 +8,7 @@
         Title="Game" Height="768" Width="1024" Background="#FF9AD9EA">
     <Grid Width="1024" Height="768" Background="#FF9AD9EA">
         <Rectangle HorizontalAlignment="Center" Height="190" Margin="0,578,0,0" Stroke="Black" VerticalAlignment="Top" Width="1024" Fill="#FFFFC90D"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="39,632,0,0" TextWrapping="Wrap" Text="Wprowadź słowo" VerticalAlignment="Top" Width="378" FontSize="48" UseLayoutRounding="True" CaretBrush="Black" OpacityMask="Black" BorderBrush="Black" SelectionOpacity="0.8" BorderThickness="6,6,6,6" HorizontalContentAlignment="Center" TextAlignment="Center" FontFamily="Calibri" MaxLength="15" MaxLines="1" SelectionBrush="Black" KeyDown="czyEnter" GotFocus="textBox1_GotFocus"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="39,632,0,0" TextWrapping="Wrap" Text="Wprowadź słowo" VerticalAlignment="Top" Width="378" FontSize="48" UseLayoutRounding="True" CaretBrush="Black" OpacityMask="Black" BorderBrush="Black" SelectionOpacity="0.8" BorderThickness="6,6,6,6" HorizontalContentAlignment="Center" TextAlignment="Center" FontFamily="Calibri" MaxLength="15" MaxLines="1" SelectionBrush="Black" KeyDown="CzyEnter" GotFocus="TextBox1_GotFocus"/>
         <Image x:Name="zycie0" HorizontalAlignment="Left" Height="100" Margin="39,32,0,0" VerticalAlignment="Top" Width="100" Source="/zycie.png"/>
         <Image x:Name="zycie1" HorizontalAlignment="Left" Height="100" Margin="144,32,0,0" VerticalAlignment="Top" Width="100" Source="/zycie.png"/>
         <Image x:Name="zycie2" HorizontalAlignment="Left" Height="100" Margin="249,32,0,0" VerticalAlignment="Top" Width="100" Source="/zycie.png"/>

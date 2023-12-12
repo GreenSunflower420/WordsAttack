@@ -15,7 +15,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="backButton" Content="Wróć" HorizontalAlignment="Left" Margin="0,56,0,0" VerticalAlignment="Top" Height="80" Width="92" FontSize="24" Click="backButton_Click"/>
+        <Button x:Name="backButton" Content="Wróć" HorizontalAlignment="Left" Margin="0,56,0,0" VerticalAlignment="Top" Height="80" Width="92" FontSize="24" Click="BackButton_Click"/>
 
 
     </Grid>

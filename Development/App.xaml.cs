@@ -9,7 +9,7 @@ using System.Windows;
 namespace Development
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Klasa odpowiadająca za aplikację
     /// </summary>
     public partial class App : Application
     {
